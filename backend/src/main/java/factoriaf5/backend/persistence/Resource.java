@@ -19,13 +19,24 @@ public class Resource {
     String description;
     LocalDate date;
 
-    public Resource(Long id, String title, String url, String description, LocalDate date) {
+    public Resource(String url, String title , String description, LocalDate date) {
+        this.title = title;
+        this.url = url;
+        this.description = description;
+        this.date = date;
+    }
+
+
+
+    public Resource(Long id, String url, String title, String description, LocalDate date) {
         this.id = id;
         this.title = title;
         this.url = url;
         this.description = description;
         this.date = date;
     }
+
+    
 
     public Long getId() {
         return id;
