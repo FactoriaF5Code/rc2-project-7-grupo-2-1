@@ -53,8 +53,6 @@ public class Resource {
     public LocalDate getDate() {
         return date;
     }
-
-    
 }
 
 
