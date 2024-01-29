@@ -26,8 +26,6 @@ public class Resource {
         this.date = date;
     }
 
-
-
     public Resource(Long id, String url, String title, String description, LocalDate date) {
         this.id = id;
         this.title = title;
@@ -35,8 +33,6 @@ public class Resource {
         this.description = description;
         this.date = date;
     }
-
-    
 
     public Long getId() {
         return id;
