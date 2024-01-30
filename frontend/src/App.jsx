@@ -1,18 +1,8 @@
+import "./App.css";
+import { AppRouter } from "./router/AppRouter";
 
-import './App.css'
-import { BrowserRouter , Route , Routes } from 'react-router-dom'
 function App() {
-
-
-  return (
-    <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" exact component={HomePage} />
-    </Routes>
-    </BrowserRouter>
-    </>
-  )
+  return (<AppRouter />);
 }
 
-export default App
+export default App;
