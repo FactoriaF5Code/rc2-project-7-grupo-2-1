@@ -14,22 +14,25 @@ public class Resource {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     Long id;
-    String title;
     String url;
+    String title;
     String description;
     LocalDate date;
 
+    public Resource() {
+    }
+
     public Resource(String url, String title , String description, LocalDate date) {
-        this.title = title;
         this.url = url;
+        this.title = title;
         this.description = description;
         this.date = date;
     }
 
     public Resource(Long id, String url, String title, String description, LocalDate date) {
         this.id = id;
-        this.title = title;
         this.url = url;
+        this.title = title;
         this.description = description;
         this.date = date;
     }
@@ -38,12 +41,12 @@ public class Resource {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public String getUrl() {
         return url;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
