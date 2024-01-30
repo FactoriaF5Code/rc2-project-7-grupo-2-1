@@ -1,7 +1,10 @@
 import './Resource.css';
 
-export const Resource = ({...resource}) => {
+export const Resource = ({ ...resource }) => {
   return (
-        <li><h2>{resource.title}</h2><button>...</button></li>
+    <li className="titlesResource">
+      <h2>{resource.title}</h2>
+      <button>...</button>
+    </li>
   )
 }
