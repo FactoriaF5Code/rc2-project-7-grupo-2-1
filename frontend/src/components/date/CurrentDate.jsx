@@ -16,8 +16,8 @@ export const CurrentDate = () => {
     }
 
     return (
-        <div>
-            <p>{fechaActual}</p>
+        <div className='currentDate'>
+            {fechaActual}
         </div>
     )
 }
