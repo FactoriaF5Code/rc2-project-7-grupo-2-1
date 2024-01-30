@@ -10,7 +10,7 @@ export const useAxios = (url) => {
         .then((response) => setData(response.data))
         .catch((error) => 
         console.error('Error al obtener datos del backend', error))
-    });
+    }, []);
   return (
     {data}
   )
