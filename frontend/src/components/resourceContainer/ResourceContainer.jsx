@@ -1,7 +1,21 @@
+import { useAxios } from "../../hooks/useAxios"
+import { Resource } from "../resource/Resource";
 
 
 export const ResourceContainer = () => {
+
+    const {data} = useAxios('http://localhost:8080/resources');
+
   return (
-    <div>ResourceContainer</div>
+    <div>
+        <h1>Todos mis apuntes</h1>
+        <ul>
+        {data && 
+            data.map((resource) => (
+                <Resource key={resource.id} {...resource}/>
+            ))
+        }
+        </ul>
+    </div>
   )
 }

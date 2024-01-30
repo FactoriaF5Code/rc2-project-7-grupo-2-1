@@ -1,7 +1,8 @@
+import { ResourceContainer } from "../components/resourceContainer/ResourceContainer"
 
 
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <ResourceContainer />
   )
 }
