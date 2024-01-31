@@ -8,8 +8,8 @@ export const HomePage = () => {
     <>
       <Header />
       <div className="containerHome">
-      <Navbar />
-      <ResourceContainer />
+        <Navbar />
+        <ResourceContainer />
       </div>
     </>
   )
