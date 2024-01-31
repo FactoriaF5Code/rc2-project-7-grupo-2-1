@@ -7,8 +7,7 @@ export const ResourceContainer = () => {
     const {data} = useAxios('http://localhost:8080/resources');
 
   return (
-    <main>
-      <section className="containers">
+      <main className="containers">
         <h1>Todos mis apuntes</h1>
         <ul>
         {data && 
@@ -17,7 +16,6 @@ export const ResourceContainer = () => {
             ))
         }
         </ul>
-      </section>
-    </main>
+      </main>
   )
 }
