@@ -7,10 +7,10 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <section className="containerHome">
+      <div className="containerHome">
       <Navbar />
       <ResourceContainer />
-      </section>
+      </div>
     </>
   )
 }
