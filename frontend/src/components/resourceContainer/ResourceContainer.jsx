@@ -1,6 +1,8 @@
-import { useAxios } from "../../hooks/useAxios"
-import { Resource } from "../resource/Resource";
 import './ResourceContainer.css'
+
+import { useAxios } from "../../hooks/useAxios";
+import { Resource } from "../resource/Resource";
+import { AddIcon } from "../../assets/AddIcon"
 
 export const ResourceContainer = () => {
 
@@ -10,7 +12,9 @@ export const ResourceContainer = () => {
       <main className="containers">
         <div>
           <h1>Todos mis apuntes</h1>
-          <button>+</button>
+          <button className='addIcon'>
+            <AddIcon />
+          </button>
         </div>
         <ul>
         {data && 

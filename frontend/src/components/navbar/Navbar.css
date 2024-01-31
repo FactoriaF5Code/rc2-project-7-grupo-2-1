@@ -5,6 +5,7 @@
     border-radius: 4rem;
     display: flex;
     justify-content: center;
+    align-self: flex-end;
 }
 
 .navbar button {

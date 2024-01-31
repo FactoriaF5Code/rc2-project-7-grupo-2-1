@@ -1,9 +1,10 @@
 header {
     display: flex;
     justify-content: space-between;
-    padding: 3rem;
+    padding: 2.5rem;
+    padding-bottom: 0;
 }
 
 header img {
-    width: 40%;
+    width: 70px;
 }

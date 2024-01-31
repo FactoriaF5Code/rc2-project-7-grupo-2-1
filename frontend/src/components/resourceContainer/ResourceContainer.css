@@ -1,34 +1,38 @@
 .containers {
     height: auto;
     width: 70%;
-    border-radius: 4rem;
-    background-color: #ffffff ;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.containers h1 {
-    margin-bottom: 30px;
-    font-size: 2vw;
-}
-
-.containers ul {
-    padding: 0;
 }
 
 .containers div {
     display: flex;
-    margin-top: -8vh;
     justify-content: space-between;
+    padding: 0 30px;
+}
+
+.containers h1 {
+    font-size: 2vw;
+    font-weight: 400;
+}
+
+.containers ul {
+    width: 100%;
+    height: 70vh;
+    padding: 15px 30px;
+    background-color: #ffffff ;
+    border-radius: 4rem;
+    margin: 0;
 }
 
 .containers button {
-    width: 3vw;
-    height: 3vw;
-    border-radius: 50%;
-    background-color: var(--blue);
     border: none;
-    color: var(--white);
-    font-size: 2.5vw;
-    text-align: center;
+    background-color: transparent;
 }
+
+.addIcon, .addIcon svg{
+    width: 3.5vw;
+    height: auto;
+}
+
+.addIcon:hover svg circle {
+    fill: var(--darkBlue);
+  }

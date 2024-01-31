@@ -9,18 +9,16 @@
     font-weight:lighter;
 }
 
-.titlesResource button {
-    width: 3vw;
-    height: 3vw;
-    border-radius: 50%;
-    background-color: var(--blue);
-    border: none;
-    color: var(--white);
-    font-size: 2.5vw;
-    text-align: center;
-}
-
 hr {
     border: none;
     border-top: 1px solid var(--grey);
 }
+
+.editIcon, .editIcon svg{
+    width: 3vw;
+    height: auto;
+}
+
+.editIcon:hover svg circle {
+    fill: var(--darkBlue);
+  }
