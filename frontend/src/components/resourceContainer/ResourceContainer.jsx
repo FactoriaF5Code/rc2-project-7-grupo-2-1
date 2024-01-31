@@ -10,7 +10,7 @@ export const ResourceContainer = () => {
 
   return (
       <main className="containers">
-        <div>
+        <div className="cabeceraCategoria">
           <h1>Todos mis apuntes</h1>
           <button className='addIcon'>
             <AddIcon />

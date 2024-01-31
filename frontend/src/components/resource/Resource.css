@@ -1,24 +1,55 @@
 .titlesResource {
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .titlesResource h2 {
-    font-size: 1.3vw;
-    font-weight:lighter;
+  font-size: 1.3vw;
+  font-weight: lighter;
+  position: relative;
 }
 
 hr {
-    border: none;
-    border-top: 1px solid var(--grey);
+  border: none;
+  border-top: 1px solid var(--grey);
 }
 
-.editIcon, .editIcon svg{
-    width: 3vw;
-    height: auto;
+.containerMenu {
+  display: flex;
+  flex-direction: row;
+}
+
+.editIcon, .editIcon svg {
+  width: 3vw;
+  height: auto;
 }
 
 .editIcon:hover svg circle {
-    fill: var(--darkBlue);
-  }
+  fill: var(--darkBlue);
+}
+
+.menu {
+  height: 3vw;
+  padding: 0 20px;
+  border-radius: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--lightGrey);
+  transform: translateX(50%) scale(0);
+  transition: transform 0.5s ease-in-out; 
+}
+
+.menu.visible {
+  transform: translateX(0) scale(1);
+}
+
+.menu.visible .editIcon {
+  transform: translateX(-3.5vw);
+}
+
+.menu button {
+  font-size: 1.3vw;
+  font-weight: lighter;
+}
