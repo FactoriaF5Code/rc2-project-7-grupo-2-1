@@ -4,3 +4,14 @@
     border-radius: 4rem;
     background-color: #ffffff ;
 }
+
+.containers h1 {
+    margin-top: -40px;
+    margin-bottom: 30px;
+    font-size: 2vw;
+}
+
+.containers ul {
+    padding: 0;
+    margin: 10px 30px;
+}

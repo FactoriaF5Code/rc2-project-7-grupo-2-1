@@ -1,8 +1,7 @@
 header {
     display: flex;
     justify-content: space-between;
-    padding: 5rem;
-    align-items: center;
+    padding: 3rem;
 }
 
 header img {

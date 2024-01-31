@@ -1,5 +1,26 @@
 .titlesResource {
     display:flex;
     justify-content:space-between;
-    
+    align-items: center;
+}
+
+.titlesResource h2 {
+    font-size: 1.3vw;
+    font-weight:lighter;
+}
+
+.titlesResource button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    border: none;
+    color: var(--white);
+    font-size: 2.5vw;
+    line-height: 37px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--grey);
 }
