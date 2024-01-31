@@ -18,7 +18,7 @@
 
 .containers div {
     display: flex;
-    margin-top: -50px;
+    margin-top: -8vh;
     justify-content: space-between;
 }
 
