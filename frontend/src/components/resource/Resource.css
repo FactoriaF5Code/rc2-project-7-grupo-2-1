@@ -10,14 +10,14 @@
 }
 
 .titlesResource button {
-    width: 35px;
-    height: 35px;
+    width: 3vw;
+    height: 3vw;
     border-radius: 50%;
     background-color: var(--blue);
     border: none;
     color: var(--white);
     font-size: 2.5vw;
-    line-height: 37px;
+    text-align: center;
 }
 
 hr {

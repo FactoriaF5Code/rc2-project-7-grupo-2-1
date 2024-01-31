@@ -8,7 +8,10 @@ export const ResourceContainer = () => {
 
   return (
       <main className="containers">
-        <h1>Todos mis apuntes</h1>
+        <div>
+          <h1>Todos mis apuntes</h1>
+          <button>+</button>
+        </div>
         <ul>
         {data && 
             data.map((resource) => (
