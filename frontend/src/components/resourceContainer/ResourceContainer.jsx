@@ -6,28 +6,31 @@ import { AddIcon } from "../../assets/AddIcon";
 import { AddModal } from "../addModal/AddModal";
 
 export const ResourceContainer = () => {
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "/resources",
+  });
 
-    const {data} = useAxios('http://localhost:8080/resources');
+  const resources = Array.isArray(response)
+    ? response.map((resource) => <Resource key={resource.id} {...resource} />)
+    : [];
 
   return (
-      <main className="containers">
-        <div className="cabeceraCategoria">
-          <h1>Todos mis apuntes</h1>
-          <button className='addIcon'>
-            <AddIcon />
-          </button>
-        </div>
-        
-        <ul>
-        {data && 
-            data.map((resource) => (
-                <Resource key={resource.id} {...resource}/>
-            ))
-        }
-        </ul>
-        <div className='modal'>
+    <main className="containers">
+      <div className="cabeceraCategoria">
+        <h1>Todos mis apuntes</h1>
+        <button className="addIcon">
+          <AddIcon />
+        </button>
+      </div>
+      <ul>
+        {loading ? <p>Cargando...</p> : null}
+        {error ? <p>{error.message}</p> : null}
+        {resources}
+      </ul>
+      <div className='modal'>
           <AddModal />
-        </div>
-      </main>
-  )
-}
+      </div>
+    </main>
+  );
+};
