@@ -25,7 +25,7 @@ hr {
   height: auto;
 }
 
-.editIcon:hover svg circle {
+.editIcon svg circle:hover {
   fill: var(--darkBlue);
 }
 

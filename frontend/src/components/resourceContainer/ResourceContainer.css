@@ -33,6 +33,6 @@
     height: auto;
 }
 
-.addIcon:hover svg circle {
+.addIcon svg circle:hover {
     fill: var(--darkBlue);
   }
