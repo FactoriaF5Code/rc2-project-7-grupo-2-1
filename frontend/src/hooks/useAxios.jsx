@@ -1,17 +1,27 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export const useAxios = (url) => {
-    const[ data, setData ]= useState();
+axios.defaults.baseURL = 'http://localhost:8080';
 
-    useEffect(() => {
-        axios
-        .get(url)
-        .then((response) => setData(response.data))
-        .catch((error) => 
-        console.error('Error al obtener datos del backend', error))
-    }, []);
-  return (
-    {data}
-  )
-}
+export const useAxios = (axiosParams) => {
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  const fetchData = async (params) => {
+    try {
+      const response = await axios.request(params);
+      setResponse(response.data);
+    } catch (error) {
+      setError(error.response ? error.response.data : 'Error desconocido');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(axiosParams);
+  }, []);
+
+  return { response, loading, error };
+};
