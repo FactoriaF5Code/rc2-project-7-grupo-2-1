@@ -1,0 +1,34 @@
+.modalContainer {
+  width:60%;
+  height: auto;
+  margin: auto;
+  background-color: var(--darkBlue);
+  border-radius: 20px;
+  padding: 30px;
+  
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+  }
+  
+  
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+   
+  }
+  #fileType,#title,
+  #url,
+  #description {
+    width: 100%;
+    height: 15%;
+  }

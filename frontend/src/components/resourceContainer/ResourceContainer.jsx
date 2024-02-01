@@ -2,7 +2,8 @@ import './ResourceContainer.css'
 
 import { useAxios } from "../../hooks/useAxios";
 import { Resource } from "../resource/Resource";
-import { AddIcon } from "../../assets/AddIcon"
+import { AddIcon } from "../../assets/AddIcon";
+import { AddModal } from "../addModal/AddModal";
 
 export const ResourceContainer = () => {
 
@@ -16,6 +17,7 @@ export const ResourceContainer = () => {
             <AddIcon />
           </button>
         </div>
+        
         <ul>
         {data && 
             data.map((resource) => (
@@ -23,6 +25,9 @@ export const ResourceContainer = () => {
             ))
         }
         </ul>
+        <div className='modal'>
+          <AddModal />
+        </div>
       </main>
   )
 }
