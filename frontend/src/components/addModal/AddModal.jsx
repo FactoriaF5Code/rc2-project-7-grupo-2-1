@@ -1,5 +1,7 @@
 import "./AddModal.css";
 import { useState } from "react";
+import { AddIcon } from "../../assets/AddIcon";
+
 export const AddModal = () => {
   const [fileType, setFileType] = useState("");
   const [title, setTitle] = useState("");
@@ -19,16 +21,12 @@ export const AddModal = () => {
         <div className="info">
           <label htmlFor="fileType" className="form-label"></label>
           <select
-           
             id="fileType"
             name="fileType"
             value={fileType}
             onChange={(e) => setFileType(e.target.value)}
           >
-            <option value="html">HTML</option>
-            <option value="css">CSS</option>
-            <option value="javascript">JAVACRIPT</option>
-            <option value="java">JAVA</option>
+            <option value="html">Todos mis apuntes</option>
           </select>
         </div>
 
@@ -36,7 +34,6 @@ export const AddModal = () => {
           <label htmlFor="title" className="form-label"></label>
           <input
             type="text"
-          
             id="title"
             name="title"
             placeholder="Título del Archivo"
@@ -49,7 +46,6 @@ export const AddModal = () => {
           <label htmlFor="url" className="form-label"></label>
           <input
             type="url"
-            
             id="url"
             name="url"
             placeholder="URL del Archivo"
@@ -60,7 +56,6 @@ export const AddModal = () => {
         <div className="info">
           <label htmlFor="description" className="form-label"></label>
           <textarea
-            
             id="description"
             name="description"
             rows="3"
@@ -73,10 +68,10 @@ export const AddModal = () => {
         <div className="modalButton">
           <button
             type="button"
-            className="btn btn-success"
+            className="button"
             onClick={agregarArchivo}
           >
-            Agregar Archivo
+            <AddIcon />
           </button>
         </div>
       </form>

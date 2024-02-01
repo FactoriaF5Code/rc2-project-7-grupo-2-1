@@ -1,49 +1,50 @@
 .containers {
-    height: auto;
-    width: 70%;
-    position: relative;
+  height: auto;
+  width: 70%;
+  position: relative;
 }
 
 .cabeceraCategoria {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
 .containers h1 {
-    font-size: 2vw;
-    font-weight: 400;
+  font-size: 2vw;
+  font-weight: 400;
 }
 
 .containers ul {
-    width: 100%;
-    height: 70vh;
-    padding: 15px 30px;
-    background-color: #ffffff ;
-    border-radius: 4rem;
-    margin: 0;
+  width: 100%;
+  height: 70vh;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-radius: 4rem;
+  margin: 0;
 }
 
 .containers button {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
-.addIcon, .addIcon svg{
-    width: 3.5vw;
-    height: auto;
-    cursor: pointer;
+.addIcon,
+.addIcon svg {
+  width: 3.5vw;
+  height: auto;
+  cursor: pointer;
 }
 
 .addIcon:hover svg circle {
-    fill: var(--darkBlue);
-  }
-.modal{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  fill: var(--darkBlue);
+}
 
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
