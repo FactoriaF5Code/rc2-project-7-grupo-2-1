@@ -1,24 +1,32 @@
-import { useAxios } from "../../hooks/useAxios"
+import "./ResourceContainer.css";
+
+import { useAxios } from "../../hooks/useAxios";
 import { Resource } from "../resource/Resource";
-import './ResourceContainer.css'
+import { AddIcon } from "../../assets/AddIcon";
 
 export const ResourceContainer = () => {
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "/resources",
+  });
 
-    const {data} = useAxios('http://localhost:8080/resources');
+  const resources = Array.isArray(response)
+    ? response.map((resource) => <Resource key={resource.id} {...resource} />)
+    : [];
 
   return (
-      <main className="containers">
-        <div>
-          <h1>Todos mis apuntes</h1>
-          <button>+</button>
-        </div>
-        <ul>
-        {data && 
-            data.map((resource) => (
-                <Resource key={resource.id} {...resource}/>
-            ))
-        }
-        </ul>
-      </main>
-  )
-}
+    <main className="containers">
+      <div className="cabeceraCategoria">
+        <h1>Todos mis apuntes</h1>
+        <button className="addIcon">
+          <AddIcon />
+        </button>
+      </div>
+      <ul>
+        {loading ? <p>Cargando...</p> : null}
+        {error ? <p>{error.message}</p> : null}
+        {resources}
+      </ul>
+    </main>
+  );
+};
