@@ -31,8 +31,9 @@
 .addIcon, .addIcon svg{
     width: 3.5vw;
     height: auto;
+    cursor: pointer;
 }
 
-.addIcon svg circle:hover {
+.addIcon:hover svg circle {
     fill: var(--darkBlue);
   }

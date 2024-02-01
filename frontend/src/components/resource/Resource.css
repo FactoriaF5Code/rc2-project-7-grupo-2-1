@@ -23,9 +23,10 @@ hr {
 .editIcon, .editIcon svg {
   width: 3vw;
   height: auto;
+  cursor: pointer;
 }
 
-.editIcon svg circle:hover {
+.editIcon:hover svg circle {
   fill: var(--darkBlue);
 }
 
@@ -52,4 +53,10 @@ hr {
 .menu button {
   font-size: 1.3vw;
   font-weight: lighter;
+  cursor: pointer;
+  color: var(--darkGrey);
+}
+
+.menu button:hover {
+ color: var(--blue);
 }
