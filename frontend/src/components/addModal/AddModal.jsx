@@ -3,17 +3,28 @@ import "./AddModal.css";
 import { useState } from "react";
 import { AddIcon } from "../../assets/AddIcon";
 
+import { useAxios } from "../../hooks/useAxios";
+
 export const AddModal = ({ onClose }) => {
   const [fileType, setFileType] = useState("");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
 
+  
+
   const agregarArchivo = () => {
-    console.log("Tipo de Archivo:", fileType);
-    console.log("Título:", title);
-    console.log("URL:", url);
-    console.log("Descripción:", description);
+     useAxios({
+      method: "post",
+      url: "/resources",
+      headers: {
+        "Content-Type": "application/json"},
+      body: {
+        title: title,
+        url: url,
+        description: description
+      }
+    });
   };
 
   const clearForm = () => {
