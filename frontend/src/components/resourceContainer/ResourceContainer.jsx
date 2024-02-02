@@ -1,29 +1,49 @@
-import './ResourceContainer.css'
+import "./ResourceContainer.css";
 
-import { useAxios } from "../../hooks/useAxios";
 import { Resource } from "../resource/Resource";
 import { AddIcon } from "../../assets/AddIcon";
 import { AddModal } from "../addModal/AddModal";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+
+import axios from "axios";
 
 export const ResourceContainer = () => {
-  const { response, loading, error } = useAxios({
-    method: "get",
-    url: "/resources",
-  });
-
-  const resources = Array.isArray(response)
-    ? response.map((resource) => <Resource key={resource.id} {...resource} />)
-    : [];
-
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  
+  const [hayQueHacerGet, setHayQueHacerGet] = useState(true);
+
+  useEffect(() => {
+    if (hayQueHacerGet) {
+      axios
+        .request({
+          method: "get",
+          url: "http://localhost:8080/resources",
+        })
+        .then((r) => setResponse(r.data))
+        .catch((err) => setError(err))
+        .finally(() => {
+          setLoading(false);
+          setHayQueHacerGet(false);
+        });
+    }
+  }, [hayQueHacerGet]);
+
+
+
   const toggleModal = () => {
     setModalVisible(!modalVisible);
-  }
+  };
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const updateList = () => {
+    closeModal();
+    // volver a llamar al get para ver la nueva lista
+    setHayQueHacerGet(true);
   };
 
   return (
@@ -37,10 +57,13 @@ export const ResourceContainer = () => {
       <ul>
         {loading ? <p>Cargando...</p> : null}
         {error ? <p>{error.message}</p> : null}
-        {resources}
+        {Array.isArray(response) &&
+          response.map((resource) => (
+            <Resource key={resource.id} {...resource} />
+          ))}
       </ul>
-      <div className={`modal ${modalVisible ? 'visible' : ''}`}>
-          <AddModal onClose={closeModal}/>
+      <div className={`modal ${modalVisible ? "visible" : ""}`}>
+        <AddModal onClose={closeModal} onSubmit={updateList} />
       </div>
     </main>
   );

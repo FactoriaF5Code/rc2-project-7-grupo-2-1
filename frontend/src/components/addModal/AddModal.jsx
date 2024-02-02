@@ -3,28 +3,29 @@ import "./AddModal.css";
 import { useState } from "react";
 import { AddIcon } from "../../assets/AddIcon";
 
-import { useAxios } from "../../hooks/useAxios";
+import axios from "axios";
 
-export const AddModal = ({ onClose }) => {
+export const AddModal = ({ onClose, onSubmit }) => {
   const [fileType, setFileType] = useState("");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
 
-  
-
   const agregarArchivo = () => {
-     useAxios({
+    axios.request({
       method: "post",
-      url: "/resources",
+      url: "http://localhost:8080/resources",
       headers: {
-        "Content-Type": "application/json"},
-      body: {
+        "Content-Type": "application/json",
+      },
+      data: {
         title: title,
         url: url,
-        description: description
-      }
-    });
+        description: description,
+      },
+    })
+    .then( () => onSubmit());
+    
   };
 
   const clearForm = () => {
@@ -38,7 +39,6 @@ export const AddModal = ({ onClose }) => {
     clearForm();
     onClose();
   };
-
 
   return (
     <div className="modalContainer">
@@ -94,11 +94,7 @@ export const AddModal = ({ onClose }) => {
         </div>
 
         <div className="modalButton">
-          <button
-            type="button"
-            className="button"
-            onClick={agregarArchivo}
-          >
+          <button type="button" className="button" onClick={agregarArchivo}>
             <AddIcon />
           </button>
         </div>
