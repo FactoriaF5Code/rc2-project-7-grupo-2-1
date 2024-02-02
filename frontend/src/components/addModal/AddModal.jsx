@@ -2,7 +2,7 @@ import "./AddModal.css";
 import { useState } from "react";
 import { AddIcon } from "../../assets/AddIcon";
 
-export const AddModal = () => {
+export const AddModal = ({ onClose }) => {
   const [fileType, setFileType] = useState("");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
@@ -15,8 +15,12 @@ export const AddModal = () => {
     console.log("Descripción:", description);
   };
 
+
   return (
     <div className="modalContainer">
+      <button className="closeIcon" onClick={onClose}>
+        <AddIcon />
+      </button>
       <form>
         <div className="info">
           <label htmlFor="fileType" className="form-label"></label>

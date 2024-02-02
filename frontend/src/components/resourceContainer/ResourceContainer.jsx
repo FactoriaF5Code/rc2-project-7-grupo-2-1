@@ -22,6 +22,10 @@ export const ResourceContainer = () => {
     setModalVisible(!modalVisible);
   }
 
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <main className="containers">
       <div className="cabeceraCategoria">
@@ -36,7 +40,7 @@ export const ResourceContainer = () => {
         {resources}
       </ul>
       <div className={`modal ${modalVisible ? 'visible' : ''}`}>
-          <AddModal />
+          <AddModal onClose={closeModal}/>
       </div>
     </main>
   );

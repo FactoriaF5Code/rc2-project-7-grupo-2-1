@@ -6,6 +6,7 @@
   border-radius: 20px;
   padding: 30px;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -49,4 +50,17 @@ form {
 
 .button:hover svg path {
   stroke: var(--darkBlue);
+}
+
+.closeIcon svg {
+  width: 30px;
+  height: auto;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 10px;
+  right: 200px;
+}
+
+.closeIcon svg circle {
+  fill: var(--darkBlue);
 }
