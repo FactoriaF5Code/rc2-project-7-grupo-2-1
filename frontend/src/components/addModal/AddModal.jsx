@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./AddModal.css";
 import { useState } from "react";
 import { AddIcon } from "../../assets/AddIcon";
@@ -15,10 +16,22 @@ export const AddModal = ({ onClose }) => {
     console.log("Descripción:", description);
   };
 
+  const clearForm = () => {
+    setFileType("");
+    setTitle("");
+    setUrl("");
+    setDescription("");
+  };
+
+  const closeModal = () => {
+    clearForm();
+    onClose();
+  };
+
 
   return (
     <div className="modalContainer">
-      <button className="closeIcon" onClick={onClose}>
+      <button className="closeIcon" onClick={closeModal}>
         <AddIcon />
       </button>
       <form>
