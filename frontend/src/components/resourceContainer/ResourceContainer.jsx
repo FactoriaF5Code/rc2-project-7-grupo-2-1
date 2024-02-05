@@ -59,7 +59,7 @@ export const ResourceContainer = () => {
         {error ? <p>{error.message}</p> : null}
         {Array.isArray(response) &&
           response.map((resource) => (
-            <Resource key={resource.id} {...resource} />
+            <Resource key={resource.id} {...resource} onUpdate={updateList} />
           ))}
       </ul>
       <div className={`modal ${modalVisible ? "visible" : ""}`}>
