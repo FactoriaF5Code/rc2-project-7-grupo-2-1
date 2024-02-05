@@ -28,6 +28,7 @@ export const Resource = ({ onUpdate, ...resource }) => {
       <div className='containerMenu'>
       <div className={`menu ${menuVisible ? 'visible' : ''}`}>
         <button>Ver</button>
+        <button>Editar</button>
         <button onClick={() => eliminarArchivo(resource.id)}>
           Eliminar
         </button>
