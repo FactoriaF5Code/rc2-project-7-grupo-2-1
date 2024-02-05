@@ -8,7 +8,6 @@ import axios from "axios";
 export const Resource = ({ onUpdate, ...resource }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
-
   const eliminarArchivo = () => {
     axios.request({
       method: "delete",
