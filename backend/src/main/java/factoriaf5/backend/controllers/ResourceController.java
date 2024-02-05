@@ -2,6 +2,7 @@ package factoriaf5.backend.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,6 +56,16 @@ public class ResourceController {
 
     private ResourceResponse toResourceResponse (Resource resource) {
         return new ResourceResponse(resource.getId(), resource.getUrl(), resource.getTitle(), resource.getDescription(), resource.getDate());
+    }
+
+    @PutMapping("/resources/{id}")
+    public ResponseEntity<ResourceResponse> editResource(@PathVariable Long id, @RequestBody ResourceRequest request) {
+        return repository.findById(id)
+                .map(resource -> {
+                    Resource updatedResource = repository.save(new Resource(id, request.getUrl(), request.getTitle(), request.getDescription(), request.getDate()));
+                    return ResponseEntity.ok(new ResourceResponse(updatedResource.getId(), updatedResource.getUrl(), updatedResource.getTitle(), updatedResource.getDescription(), updatedResource.getDate()));
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
