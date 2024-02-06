@@ -21,6 +21,43 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
     setMenuVisible(!menuVisible);
   };
 
+  const editarArchivo = (id, newData, onSubmit) => {
+    axios.request({
+      method: "get",
+      url: `http://localhost:8080/resource/${id}`
+    })
+    
+    .then(response => {
+      const resourceData = response.data;
+      
+      axios.request({
+        method: "put",
+        url: `http://localhost:8080/resource/${id}`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          ...resourceData,
+          ...newData
+        }
+        .then(() => {
+          onSubmit();
+        })
+        .catch(error => {
+          console.error('Error al actualizar el recurso:', error);
+        })
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos del recurso:', error);
+      });
+    })
+  }
+
+  const botonEditar = (id) => {
+    toggleModal(id);
+    editarArchivo(id);
+  }
+
   return (
     <>
     <li className="titlesResource">
@@ -29,7 +66,7 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
       <div className='containerMenu'>
       <div className={`menu ${menuVisible ? 'visible' : ''}`}>
         <button>Ver</button>
-        <button onClick={() => toggleModal(resource)}>Editar</button>
+        <button onClick={() => botonEditar(resource.id)}>Editar</button>
         <button onClick={() => eliminarArchivo(resource.id)}>
           Eliminar
         </button>

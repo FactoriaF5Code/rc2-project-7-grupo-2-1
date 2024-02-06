@@ -13,7 +13,6 @@ export const ResourceContainer = () => {
   const [error, setError] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [hayQueHacerGet, setHayQueHacerGet] = useState(true);
-  const [editResource, setEditResource] = useState(null);
 
   useEffect(() => {
     if (hayQueHacerGet) {
@@ -33,10 +32,10 @@ export const ResourceContainer = () => {
 
 
 
-  const toggleModal = (resource) => {
-    if (resource) {
-      setEditResource(resource);
-    }
+  const toggleModal = () => {
+    /*if (resource) {
+      EditarArchivo(resource);
+    }*/
     setModalVisible(!modalVisible);
   };
 
