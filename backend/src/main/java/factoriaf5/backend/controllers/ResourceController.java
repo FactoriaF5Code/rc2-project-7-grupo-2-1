@@ -2,6 +2,7 @@ package factoriaf5.backend.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,17 @@ public class ResourceController {
         }
         return resources;
     }
+    
+    @GetMapping("/resource/{id}")
+    public ResponseEntity<ResourceResponse> getResourceById(@PathVariable Long id) {
+        Optional<Resource> resourceOptional = repository.findById(id);
+        if (resourceOptional.isPresent()) {
+            Resource resource = resourceOptional.get();
+            ResourceResponse resourceResponse = new ResourceResponse(resource.getId(), resource.getUrl(), resource.getTitle(), resource.getDescription(), resource.getDate());
+            return ResponseEntity.ok(resourceResponse);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @PostMapping("/resources")
     public ResourceResponse createResource(@RequestBody ResourceRequest request) {
@@ -44,7 +56,7 @@ public class ResourceController {
         return new ResourceResponse(savedResource.getId(), savedResource.getUrl(), savedResource.getTitle(), savedResource.getDescription(), savedResource.getDate());
     }
 
-    @DeleteMapping("/resources/{id}")
+    @DeleteMapping("/resource/{id}")
     public ResponseEntity <ResourceResponse> deleteResource(@PathVariable Long id) {
         return repository.findById(id)
             .map(resource -> { repository.deleteById(resource.getId()); return resource; })
@@ -57,7 +69,7 @@ public class ResourceController {
         return new ResourceResponse(resource.getId(), resource.getUrl(), resource.getTitle(), resource.getDescription(), resource.getDate());
     }
 
-    @PutMapping("/resources/{id}")
+    @PutMapping("/resource/{id}")
     public ResponseEntity<ResourceResponse> editResource(@PathVariable Long id, @RequestBody ResourceRequest request) {
         return repository.findById(id)
                 .map(resource -> {
