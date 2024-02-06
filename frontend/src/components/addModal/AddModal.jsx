@@ -5,16 +5,23 @@ import { AddIcon } from "../../assets/AddIcon";
 
 import axios from "axios";
 
-export const AddModal = ({ onClose, onSubmit }) => {
-  const [fileType, setFileType] = useState("");
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
-  const [description, setDescription] = useState("");
+export const AddModal = ({ onClose, onSubmit, resource }) => {
+  const isEdit = resource !== undefined;
+  const [fileType, setFileType] = useState(isEdit ? resource.fileType : "");
+  const [title, setTitle] = useState(isEdit ? resource.title : "");
+  const [url, setUrl] = useState(isEdit ? resource.url : "");
+  const [description, setDescription] = useState(isEdit ? resource.description : "");
+
+  console.log("resource prop:", resource);
+  console.log("isEdit:", isEdit);
+  console.log("title:", title);
+  console.log("url:", url);
+  console.log("description:", description);
 
   const agregarArchivo = () => {
     axios.request({
-      method: "post",
-      url: "http://localhost:8080/resources",
+      method: isEdit? "put" : "post",
+      url: isEdit ? `http://localhost:8080/resource/${resource.id}` : "http://localhost:8080/resources",
       headers: {
         "Content-Type": "application/json",
       },
@@ -95,7 +102,7 @@ export const AddModal = ({ onClose, onSubmit }) => {
 
         <div className="modalButton">
           <button type="button" className="button" onClick={agregarArchivo}>
-            <AddIcon />
+            { !isEdit ? <AddIcon /> : <span>Edit</span> }
           </button>
         </div>
       </form>

@@ -13,6 +13,7 @@ export const ResourceContainer = () => {
   const [error, setError] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [hayQueHacerGet, setHayQueHacerGet] = useState(true);
+  const [recursoAEditar, setRecursoAEditar] = useState(undefined);
 
   useEffect(() => {
     if (hayQueHacerGet) {
@@ -32,10 +33,8 @@ export const ResourceContainer = () => {
 
 
 
-  const toggleModal = () => {
-    /*if (resource) {
-      EditarArchivo(resource);
-    }*/
+  const toggleModal = (id) => {
+    setRecursoAEditar(response.find( r => r.id ===  id));
     setModalVisible(!modalVisible);
   };
 
@@ -66,7 +65,7 @@ export const ResourceContainer = () => {
           ))}
       </ul>
       <div className={`modal ${modalVisible ? "visible" : ""}`}>
-        <AddModal onClose={closeModal} onSubmit={updateList} />
+        <AddModal onClose={closeModal} onSubmit={updateList} resource={recursoAEditar} />
       </div>
     </main>
   );

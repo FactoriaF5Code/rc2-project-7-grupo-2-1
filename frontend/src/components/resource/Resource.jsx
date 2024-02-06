@@ -21,7 +21,7 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
     setMenuVisible(!menuVisible);
   };
 
-  const editarArchivo = (id, newData, onSubmit) => {
+  /*const editarArchivo = (id, newData, onSubmit) => {
     axios.request({
       method: "get",
       url: `http://localhost:8080/resource/${id}`
@@ -51,11 +51,11 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
         console.error('Error al obtener los datos del recurso:', error);
       });
     })
-  }
+  }*/
 
   const botonEditar = (id) => {
     toggleModal(id);
-    editarArchivo(id);
+    // editarArchivo(id);
   }
 
   return (
