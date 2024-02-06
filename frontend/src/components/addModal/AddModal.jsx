@@ -1,15 +1,24 @@
 /* eslint-disable react/prop-types */
 import "./AddModal.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddIcon } from "../../assets/AddIcon";
 
 import axios from "axios";
 
-export const AddModal = ({ onClose, onSubmit }) => {
+export const AddModal = ({ onClose, onSubmit, editResource }) => {
   const [fileType, setFileType] = useState("");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    if (editResource) {
+      setFileType(editResource.fileType);
+      setTitle(editResource.title);
+      setUrl(editResource.url);
+      setDescription(editResource.description);
+    }
+  }, [editResource]);
 
   const agregarArchivo = () => {
     axios.request({
@@ -26,6 +35,30 @@ export const AddModal = ({ onClose, onSubmit }) => {
     })
     .then( () => onSubmit());
     
+  };
+
+  const editarArchivo = () => {
+    axios.request({
+      method: "put",
+      url: `http://localhost:8080/resource/${editResource.id}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        title: title,
+        url: url,
+        description: description,
+      },
+    })
+    .then(() => {
+      // Lógica para manejar la respuesta
+      console.log("Recurso editado exitosamente");
+      onSubmit(); // Llama a la función onSubmit para actualizar la lista de recursos
+    })
+    .catch((error) => {
+      // Lógica para manejar errores
+      console.error("Error al editar recurso", error);
+    });
   };
 
   const clearForm = () => {

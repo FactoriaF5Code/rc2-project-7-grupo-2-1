@@ -6,13 +6,13 @@ import { EditIcon } from '../../assets/EditIcon'
 
 import axios from "axios";
 
-export const Resource = ({ onUpdate, ...resource }) => {
+export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const eliminarArchivo = () => {
     axios.request({
       method: "delete",
-      url: `http://localhost:8080/resources/${resource.id}`,
+      url: `http://localhost:8080/resource/${resource.id}`,
     })
     .then( () => onUpdate());
     };
@@ -29,7 +29,7 @@ export const Resource = ({ onUpdate, ...resource }) => {
       <div className='containerMenu'>
       <div className={`menu ${menuVisible ? 'visible' : ''}`}>
         <button>Ver</button>
-        <button>Editar</button>
+        <button onClick={() => toggleModal(resource)}>Editar</button>
         <button onClick={() => eliminarArchivo(resource.id)}>
           Eliminar
         </button>

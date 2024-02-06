@@ -13,6 +13,7 @@ export const ResourceContainer = () => {
   const [error, setError] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [hayQueHacerGet, setHayQueHacerGet] = useState(true);
+  const [editResource, setEditResource] = useState(null);
 
   useEffect(() => {
     if (hayQueHacerGet) {
@@ -32,7 +33,10 @@ export const ResourceContainer = () => {
 
 
 
-  const toggleModal = () => {
+  const toggleModal = (resource) => {
+    if (resource) {
+      setEditResource(resource);
+    }
     setModalVisible(!modalVisible);
   };
 
@@ -59,7 +63,7 @@ export const ResourceContainer = () => {
         {error ? <p>{error.message}</p> : null}
         {Array.isArray(response) &&
           response.map((resource) => (
-            <Resource key={resource.id} {...resource} onUpdate={updateList} />
+            <Resource key={resource.id} {...resource} onUpdate={updateList} toggleModal={toggleModal} />
           ))}
       </ul>
       <div className={`modal ${modalVisible ? "visible" : ""}`}>
