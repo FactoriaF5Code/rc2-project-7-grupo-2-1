@@ -102,7 +102,7 @@ export const AddModal = ({ onClose, onSubmit, resource }) => {
 
         <div className="modalButton">
           <button type="button" className="button" onClick={agregarArchivo}>
-            { !isEdit ? <AddIcon /> : <span>Edit</span> }
+            { !isEdit ? <AddIcon /> : <span>Editar</span> }
           </button>
         </div>
       </form>

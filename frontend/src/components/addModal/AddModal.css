@@ -65,3 +65,9 @@ form {
 .closeIcon svg circle {
   fill: var(--darkBlue);
 }
+
+.modalButton span {
+  color: var(--white);
+  margin-top: 10px;
+  
+}

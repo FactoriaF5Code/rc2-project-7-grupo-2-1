@@ -32,7 +32,6 @@ export const ResourceContainer = () => {
   }, [hayQueHacerGet]);
 
 
-
   const toggleModal = (id) => {
     setRecursoAEditar(response.find( r => r.id ===  id));
     setModalVisible(!modalVisible);
@@ -64,9 +63,11 @@ export const ResourceContainer = () => {
             <Resource key={resource.id} {...resource} onUpdate={updateList} toggleModal={toggleModal} />
           ))}
       </ul>
-      <div className={`modal ${modalVisible ? "visible" : ""}`}>
-        <AddModal onClose={closeModal} onSubmit={updateList} resource={recursoAEditar} />
-      </div>
+      {recursoAEditar && (
+        <div className={`modal ${modalVisible ? "visible" : ""}`}>
+          <AddModal onClose={closeModal} onSubmit={updateList} resource={recursoAEditar} />
+        </div>
+      )}
     </main>
   );
 };
