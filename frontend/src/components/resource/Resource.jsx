@@ -23,6 +23,7 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
 
   const botonVer = (url) => {
     window.open(url, '_blank'); 
+    setMenuVisible(false);
   };
   /*const editarArchivo = (id, newData, onSubmit) => {
     axios.request({
@@ -58,6 +59,7 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
 
   const botonEditar = (id) => {
     toggleModal(id);
+    setMenuVisible(false);
     // editarArchivo(id);
   }
 
