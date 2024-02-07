@@ -21,6 +21,9 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
     setMenuVisible(!menuVisible);
   };
 
+  const botonVer = (url) => {
+    window.open(url, '_blank'); 
+  };
   /*const editarArchivo = (id, newData, onSubmit) => {
     axios.request({
       method: "get",
@@ -65,7 +68,7 @@ export const Resource = ({ onUpdate, toggleModal, ...resource }) => {
       
       <div className='containerMenu'>
       <div className={`menu ${menuVisible ? 'visible' : ''}`}>
-        <button>Ver</button>
+        <button onClick={()=> botonVer (resource.url)}>Ver</button>
         <button onClick={() => botonEditar(resource.id)}>Editar</button>
         <button onClick={() => eliminarArchivo(resource.id)}>
           Eliminar
